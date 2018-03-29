@@ -67,3 +67,16 @@ ATMDto(message=null, theMoney={FIFTY=2, TWENTY=5}) Optional Feature Set Support 
 The controller needs to be able to inform other interested objects of activity. Threshold notification in particular is desirable, so that the ATM can be re-supplied before it runs out of cash. Withdrawal events trigger application events which has a listener which subsequently compare the remaining quantity for the specified denomination against a threshold specified in the application.yml For now only a message is logged, however, notifications can be sent from here to further stakeholders
 
 Persistence of the controller is optional at this time. It can be kept in memory. However, it should go through a distinct initialisation period where it is told the current available amounts prior to being used. Persistence in the form of an in memory singleton immutable data class
+
+
+Check the total quantities of the amount - GET
+http://localhost:8080/atm/admin/quantities
+
+Check the total holding amount -GET
+http://localhost:8080/atm/admin/totalholdings
+
+for withdrawal of the amount- POST
+http://localhost:8080/atm/withdraw?amount=100
+
+to deposit the amount -POST
+http://localhost:8080/atm/deposit
